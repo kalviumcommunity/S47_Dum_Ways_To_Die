@@ -1,15 +1,10 @@
-const express = require('express');
-const app = express();
-const port = process.env.PUBLIC_PORT || 3000;
+const express = require('express')
+const app = express()
 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-});
+app.get('/', (req, res) => {
+  res.send("Hello Rishabh");
+})
 
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`🚀 Server running on PORT: ${port}`);
-  });
-}
-
-module.exports = app;
+app.listen(5000, ()=> {
+  console.log("Server is running on port: 5000")
+})
