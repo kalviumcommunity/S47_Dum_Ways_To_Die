@@ -1,0 +1,34 @@
+body {
+  font-family: sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+.webname {
+  text-align: center;
+  font-family: shojumaru;
+  font-size: 49px;
+  color: white;
+  text-align: center;
+  text-shadow: 12px 4px 4px rgba(0, 0, 0, 0.5);
+  background-color: wheat;
+  padding: 10px;
+  border-radius: 8px;
+}
+h1 {
+  color: orangered;
+  text-align: end;
+}
+h2 {
+  color: blue;
+  text-align: end;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+h4 {
+  color: green;
+  text-align: end;
+}
+.simp {
+  height: 200px;
+  width: 350px;
+  margin-left: 20px;
+  border: 5px solid black;
+}
