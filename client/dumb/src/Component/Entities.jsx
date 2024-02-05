@@ -1,26 +1,51 @@
-import { useState } from 'react'
-import './Component.css'
-import data from '../Data.json'
 
-function Entities() {
-  const [count, setCount] = useState(0)
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Component.css'; 
+
+const Display = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/Database')
+      .then(response => {
+        setUsers(response.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <>
-    <div className='webname'>
+     <div className='webname'>
       DUMB WAYS TO DIE
     </div>
-    <h1>{data[3].name}</h1>
-    <h2>{data[3].died}</h2>
-    <h4>{data[3].REASON}</h4>
-    <h4>{data[3].DATE}</h4>
-    <h4>{data[3].LOCATION}</h4>
+    <div className="display-container">
+      {users.map(people => (
+        <div key={people.id} className="person-container">
+          <div className="info-container">
+            <h1 className="person-name">Name: {people.name}</h1>
+            <p className="died-info">
+              <b>Died Due To:</b> {people.died}
+            </p>
+            <p className="description">
+              <b>Description:</b> {people.REASON}
+            </p>
+           
+              <p className="date">  <b>   Date: </b> {people.date}     </p>
+         
+            <p className="location">
+              <b>Location:</b> {people.LOCATION}
+            </p>
+          </div>
+          <div>
+            <img src={people.img} alt='' className='person-img' />
+          </div>
+        </div>
+      ))}
+    </div>
+    </>
+  );
+};
 
-<img className='simp' src="./images/pillow.png" alt="" />
-
-    
-     </>
-  )
-}
-
-export default Entities
+export default Display;
