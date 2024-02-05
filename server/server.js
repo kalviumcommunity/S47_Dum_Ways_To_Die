@@ -1,10 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const route = require('./route');
-const arr = require("./Data.json");
+// const arr = require("./Data.json");
 const { post, get, del,put} = require('./route');
+const DataModel = require("./model/model")
+const {MongoClient} = require('mongodb')
+const cors = require("cors")
 const app = express()
-const URI = 'mongodb+srv://Rishabh:qwyuiop@cluster0.8yyadat.mongodb.net/?retryWrites=true&w=majority';
+app.use(cors())
+const URI = 'mongodb+srv://Rishabh:qwertyuiop@cluster0.8yyadat.mongodb.net/?retryWrites=true&w=majority';
+
+
 app.get('/' ,(req,res) =>{
   mongoose.connect(URI)
     .then(() =>{
@@ -32,6 +38,17 @@ app.get('/', (req, res) => {
 
 
 
+const client = new MongoClient(URI)
+client.connect()
+.then(()=>{
+  const database = client.db("DIEE")
+  const collection = database.collection("ASAP")
 
+  app.get('/Database', async (req, res) => {
+    const result = await collection.find({}).toArray()
+    res.json(result)
+  }); 
+  
+})
 
 

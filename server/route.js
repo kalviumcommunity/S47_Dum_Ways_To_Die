@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const data = require('./Data.json');
 
 app.use(express.json());
 
