@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import Entities from './Component/Entities'
-import './App.css'
+// App.js
+import React from 'react';
+import Entities from './Component/Entities';
+import Form from './Component/Form';
+import './App.css';
+import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-<Entities></Entities>
-  )
-}
+      <>
+        {/* <Entities></Entities> */}
+      
+        <Routes>
+          <Route path="/" element={<Entities />} />
+          <Route path='/insert' element={<Form />}></Route>
+        </Routes>
+      </>
+  );
+};
 
 export default App;
