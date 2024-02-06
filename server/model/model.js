@@ -9,6 +9,6 @@ LOCATION : String,
 
 })
 
-const DataModel = mongoose.model("ASAP",DataSchema)
+const DataModel = mongoose.model("asap",DataSchema)
 
 module.exports = DataModel

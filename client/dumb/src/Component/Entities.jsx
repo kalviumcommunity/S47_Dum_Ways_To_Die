@@ -1,15 +1,16 @@
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Component.css'; 
+import './Component.css';
+import { Link } from 'react-router-dom'; 
+
 
 const Display = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/Database')
+    axios.get('http://localhost:3000/')
       .then(response => {
+        console.log(response)
         setUsers(response.data);
       })
       .catch(err => console.log(err));
@@ -17,6 +18,9 @@ const Display = () => {
 
   return (
     <>
+      <div>
+      
+      </div>
      <div className='webname'>
       DUMB WAYS TO DIE
     </div>
@@ -32,7 +36,7 @@ const Display = () => {
               <b>Description:</b> {people.REASON}
             </p>
            
-              <p className="date">  <b>   Date: </b> {people.date}     </p>
+              <p className="date">  <b>   Date: </b> {people.DATE}     </p>
          
             <p className="location">
               <b>Location:</b> {people.LOCATION}
@@ -40,10 +44,17 @@ const Display = () => {
           </div>
           <div>
             <img src={people.img} alt='' className='person-img' />
+         
+
           </div>
         </div>
       ))}
+      
     </div>
+    <Link to="/insert">
+          <button className='add'>Add Data</button>
+        </Link>  
+       
     </>
   );
 };

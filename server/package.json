@@ -4,7 +4,8 @@
   "description": "This is your first repository\r This is my first repository This is a project in which I will show some dumb ways to Dieeeee!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
