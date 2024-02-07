@@ -33,13 +33,13 @@ const Display = () => {
               <b>Died Due To:</b> {people.died}
             </p>
             <p className="description">
-              <b>Description:</b> {people.REASON}
+              <b>Description:</b> {people.reason}
             </p>
            
-              <p className="date">  <b>   Date: </b> {people.DATE}     </p>
+              <p className="date">  <b>   Date: </b> {people.date}     </p>
          
             <p className="location">
-              <b>Location:</b> {people.LOCATION}
+              <b>Location:</b> {people.location}
             </p>
           </div>
           <div>
