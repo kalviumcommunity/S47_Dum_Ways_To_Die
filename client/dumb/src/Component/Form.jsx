@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const Form = () => {
   const [name, setName] = useState("");
   const [died, setDied] = useState("");
-  const [REASON, setReason] = useState("");
-  const [DATE, setDate] = useState("");
-  const [LOCATION, setLocation] = useState("");
+  const [reason, setReason] = useState("");
+  const [date, setDate] = useState("");
+  const [location, setLocation] = useState("");
 
   const Submit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/adddata",{name, died, REASON, DATE, LOCATION})
+    axios.post("http://localhost:3000/adddata",{name, died, reason, date, location})
       .then(result => console.log(result))
       .catch(err => console.log(err));
   };
