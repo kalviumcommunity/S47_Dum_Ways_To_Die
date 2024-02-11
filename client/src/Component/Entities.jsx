@@ -10,11 +10,18 @@ const Display = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/')
       .then(response => {
-        console.log(response)
         setUsers(response.data);
       })
       .catch(err => console.log(err));
   }, []);
+
+  const HandelDelete=(id)=>{
+    axios.delete(`http://localhost:3000/Delete-Entities/${id}`)
+    .then(res=>{
+      console.log(res)
+      window.location.reload(true)
+    }).catch(err=>console.log(err))
+  }
 
   return (
     <>
@@ -44,6 +51,8 @@ const Display = () => {
           </div>
           <div>
             <img src={people.img} alt='' className='person-img' />
+            <Link to={`/Update-Entities/${people._id}`}><button className='update'>Update</button></Link>
+            <button onClick={()=>HandelDelete(people._id)} className='delete'>Delete</button>
          
 
           </div>
@@ -51,7 +60,7 @@ const Display = () => {
       ))}
       
     </div>
-    <Link to="/insert">
+    <Link to="/Add-Entities">
           <button className='add'>Add Data</button>
         </Link>  
        
