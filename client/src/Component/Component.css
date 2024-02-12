@@ -38,7 +38,7 @@ body {
 }
 
 .person-name {
-  color: #333;
+  color: white;
 }
 
 .died-info, .description, .date, .location {
@@ -66,5 +66,17 @@ h1{
 
 .add{
   text-align: center;
-  margin-left: 580px;
+  margin-left: 44vw;
+}
+
+
+.delete{
+  text-align: center;
+  margin-left: 75vw;
+  background-color: darkred;
+
+}
+
+.delete:hover {
+  background-color: rgb(238, 17, 17);
 }
