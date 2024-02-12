@@ -2,12 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const DataModel = require('./Schema.js');
+const {ValidData} = require('./Joi_validation.js')
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+const URI = process.env.URI
 
-mongoose.connect('mongodb+srv://Rishabh:qwertyuiop@cluster0.8yyadat.mongodb.net/dieee?retryWrites=true&w=majority')
+mongoose.connect(URI)
   .then(() => {
     console.log('Connected to MongoDB');
 
@@ -19,6 +22,13 @@ mongoose.connect('mongodb+srv://Rishabh:qwertyuiop@cluster0.8yyadat.mongodb.net/
   })
    
   app.post('/adddata',(req,res)=>{
+    const {name, died, reason, date, location} = req.body
+    
+    const {error} = ValidData(req.body)
+    if(error) return res.json({message:error.message})
+
+
+
       DataModel.create(req.body)
       .then(data=>res.json(data))
       .catch((err)=>res.json(err))
