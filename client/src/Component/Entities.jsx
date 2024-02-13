@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Component.css';
-import { Link } from 'react-router-dom'; 
+import { Link,useNavigate } from 'react-router-dom'; 
 
 
 const Display = () => {
+  const navigate = useNavigate()
   const [users, setUsers] = useState([]);
-
+  const cookies = decodeURIComponent(document.cookie).split(';')
   useEffect(() => {
     axios.get('http://localhost:3000/')
       .then(response => {
         setUsers(response.data);
+        console.log(cookies)
       })
       .catch(err => console.log(err));
   }, []);
 
+  const HandleLogout = ()=>{
+    document.cookie = "Name=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
+    document.cookie = "Password=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
+    document.cookie = "Email=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
+    navigate('/')
+    window.location.reload(true)
+  }
   const HandelDelete=(id)=>{
     axios.delete(`http://localhost:3000/Delete-Entities/${id}`)
     .then(res=>{
@@ -30,7 +39,15 @@ const Display = () => {
       </div>
      <div className='webname'>
       DUMB WAYS TO DIE
+      <button  style={{textAlign:"center",position:"relative",left:"200px",backgroundColor:"red",color:"white"}} onClick={HandleLogout}>Logout</button>
     </div>
+     <div>
+      {cookies.map((data,index)=>{
+        return(
+          <h3 key = {index}>{data}</h3>
+        )
+      })}
+     </div>
     <div className="display-container">
       {users.map(people => (
         <div key={people.id} className="person-container">
@@ -53,6 +70,7 @@ const Display = () => {
             <img src={people.img} alt='' className='person-img' />
             <Link to={`/Update-Entities/${people._id}`}><button className='update'>Update</button></Link>
             <button onClick={()=>HandelDelete(people._id)} className='delete'>Delete</button>
+
          
 
           </div>
