@@ -18,7 +18,7 @@ const Form = () => {
         if(result.data.message){
           setError(result.data.message)
         }else{
-          navigate('/')
+          navigate('/Main-page')
         }
   })
       .catch(err => console.log(err));
@@ -67,7 +67,7 @@ const Form = () => {
         <button type='submit'>
           Submit
         </button>
-        <Link to="/">
+        <Link to="/Main-page">
           <button className='back'>Back</button>
         </Link>
         {error && <p style={{color:'red',textAlign:"center"}}>Date must be in "YYYY-MM-DD"</p>}

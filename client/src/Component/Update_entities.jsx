@@ -28,7 +28,7 @@ const UpdateData = () => {
         e.preventDefault()
         axios.put(`http://localhost:3000/Update-ent/${id}`,{name,died,reason,date,location})
         .then(res=>{
-            Navigate('/')
+            Navigate('/Main-page')
         }).catch(err=>console.log(err))
     }
 
@@ -81,7 +81,7 @@ const UpdateData = () => {
         <button type='submit'>
           Submit
         </button>
-        <Link to="/">
+        <Link to="/Main-page">
           <button className='back'>Back</button>
         </Link>
       </form>
