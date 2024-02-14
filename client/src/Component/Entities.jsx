@@ -6,6 +6,7 @@ import { Link,useNavigate } from 'react-router-dom';
 
 const Display = () => {
   const navigate = useNavigate()
+  const [sort,setSort]=useState('All')
   const [users, setUsers] = useState([]);
   const cookies = decodeURIComponent(document.cookie).split(';')
   useEffect(() => {
@@ -35,11 +36,22 @@ const Display = () => {
     }).catch(err=>console.log(err))
   }
 
+  const handleDropDown=(e)=>{
+    setSort(e.target.value)
+  }
+  const Sorted = sort=='All'?users:users.filter((data)=>data.location==sort)
+  console.log(sort)
   return (
     <>
-      <div>
-      
-      </div>
+    <div>
+  <select class="custom-dropdown" onChange={handleDropDown}>
+    <option value="All">Select Category</option>
+    <option value="North America">North America</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
+  </select>
+</div>
+
      <div className='webname'>
       DUMB WAYS TO DIE
       <button  style={{textAlign:"center",position:"relative",left:"200px",backgroundColor:"red",color:"white"}} onClick={HandleLogout}>Logout</button>
@@ -47,12 +59,12 @@ const Display = () => {
      <div>
       {cookies.map((data,index)=>{
         return(
-          <h3 key = {index}>{data}</h3>
+          <h3  className='cookiess' key = {index}>{data}</h3>
         )
       })}
      </div>
     <div className="display-container">
-      {users.map(people => (
+      {Sorted.map(people => (
         <div key={people.id} className="person-container">
           <div className="info-container">
             <h1 className="person-name">Name: {people.name}</h1>

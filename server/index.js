@@ -26,7 +26,7 @@ mongoose.connect(URI)
   app.post("/login",(req,res)=>{
     const secret = "Rishabh"
     const token = JWT.sign({data:req.body}, secret, {expiresIn: "1hr"});
-    res.json({token})
+    // res.json({token})
   })
    
   app.post('/adddata',(req,res)=>{

@@ -80,3 +80,24 @@ h1{
 .delete:hover {
   background-color: rgb(238, 17, 17);
 }
+
+.custom-dropdown {
+  width: 200px; 
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid wheat;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  top: 60px;
+  left: 20px;
+  outline: wheat;
+}
+
+.custom-dropdown:hover {
+  border-color: #555;
+}
+
+.custom-dropdown option {
+  font-size: 14px;
+}
