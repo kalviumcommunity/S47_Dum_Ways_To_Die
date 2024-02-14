@@ -9,7 +9,8 @@ const Form = () => {
   const [reason, setReason] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
-  const [error,setError]=useState('')
+  const [error, setError] = useState("");
+ 
   const navigate = useNavigate()
   const Submit = (e) => {
     e.preventDefault();

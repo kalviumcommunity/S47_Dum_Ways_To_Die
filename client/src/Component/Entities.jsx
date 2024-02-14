@@ -21,9 +21,12 @@ const Display = () => {
     document.cookie = "Name=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
     document.cookie = "Password=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
     document.cookie = "Email=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
+    document.cookie = "token=; expires=Fri, 07 Aug 2023 00:00:00 UTC; path=/;"
     navigate('/')
     window.location.reload(true)
   }
+
+
   const HandelDelete=(id)=>{
     axios.delete(`http://localhost:3000/Delete-Entities/${id}`)
     .then(res=>{

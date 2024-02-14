@@ -4,6 +4,7 @@ const cors = require('cors');
 const DataModel = require('./Schema.js');
 const {ValidData} = require('./Joi_validation.js')
 require('dotenv').config();
+const JWT = require("jsonwebtoken")
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,13 @@ mongoose.connect(URI)
       DataModel.find()
       .then(data=>res.json(data))
       .catch((err)=>res.json(err))
+  })
+
+
+  app.post("/login",(req,res)=>{
+    const secret = "Rishabh"
+    const token = JWT.sign({data:req.body}, secret, {expiresIn: "1hr"});
+    res.json({token})
   })
    
   app.post('/adddata',(req,res)=>{
