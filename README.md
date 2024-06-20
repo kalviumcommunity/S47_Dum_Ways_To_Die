@@ -7,5 +7,3 @@ Basically
 "Dumb Ways to Dieeeee!" is an engaging and entertaining project that shows fictional scenarios where individuals meet their death in silly ways. This creative Project whether in the form of a vide or image will show few silly ways how people died!
 
 
-
-DEPLOYED LINKKK :- https://dumb-ways-to-day.pages.dev/https://dumb-ways-to-day.pages.dev/
